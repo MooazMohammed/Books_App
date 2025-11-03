@@ -1,5 +1,4 @@
 import 'package:flutter_application_1/constants.dart';
-import 'package:flutter_application_1/core/utils/api_service.dart';
 import 'package:flutter_application_1/features/home/domain/entities/book_entity.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -9,9 +8,9 @@ abstract class HomeLocaDataSource {
 }
 
 class HomeLocalDataSourceImpl extends HomeLocaDataSource {
-  final ApiService apiService;
+ 
 
-  HomeLocalDataSourceImpl({required this.apiService});
+  HomeLocalDataSourceImpl();
 
   @override
   List<BookEntity> fetchFeaturedBooks() {
