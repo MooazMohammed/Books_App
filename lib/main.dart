@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants.dart';
 import 'package:flutter_application_1/core/functions/set_up_service_locator.dart';
 import 'package:flutter_application_1/core/utils/app_router.dart';
+import 'package:flutter_application_1/core/utils/simple_bloc_observer.dart';
 import 'package:flutter_application_1/features/home/data/repos/home_repo_imp.dart';
 import 'package:flutter_application_1/features/home/domain/entities/book_entity.dart';
 import 'package:flutter_application_1/features/home/domain/use%20cases/fetch_featured_books_use_case.dart';
@@ -17,11 +18,10 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   setUpSeviceLocator();
+  Bloc.observer = SimpleBlocObserver();
   await Hive.openBox(kFeaturedBox);
   await Hive.openBox(kNewestBox);
 }
-
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
