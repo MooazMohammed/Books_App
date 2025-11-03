@@ -1,7 +1,8 @@
 
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/custom_list_view_item.dart';
+
+import 'custom_list_view_item.dart';
 
 class SmallerListViewBooks extends StatelessWidget {
   const SmallerListViewBooks({super.key});

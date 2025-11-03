@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_application_1/features/home/domain/entities/book_entity.dart';
+
+import '../../../domain/entities/book_entity.dart';
 
 @immutable
 sealed class NewestBooksState {}

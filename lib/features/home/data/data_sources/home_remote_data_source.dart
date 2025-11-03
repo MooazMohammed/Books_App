@@ -1,8 +1,9 @@
-import 'package:flutter_application_1/constants.dart';
-import 'package:flutter_application_1/core/utils/api_service.dart';
-import 'package:flutter_application_1/features/home/data/models/book_model/book_model.dart';
-import 'package:flutter_application_1/features/home/domain/entities/book_entity.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
+import '../../../../constants.dart';
+import '../../../../core/utils/api_service.dart';
+import '../../domain/entities/book_entity.dart';
+import '../models/book_model/book_model.dart';
 
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchFeaturedBooks();
@@ -38,7 +39,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     return books;
   }
 
-  void getsBookList(Map<dynamic, String> data, List<BookEntity> books) {
+  void getsBookList(Map<String, dynamic> data, List<BookEntity> books) {
     final items = data['items'] as List<dynamic>?;
     if (items != null) {
       for (var bookMap in items) {
@@ -48,7 +49,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   }
 
   void saveLocalData(List<BookEntity> books, String boxName) {
-    var box = Hive.box(boxName);
+    var box = Hive.box<List<BookEntity>>(boxName);
     box.add(books);
   }
 }

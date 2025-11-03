@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/core/utils/styles.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/book_rating.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/custom_list_view_item.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/free_preview_and_price.dart';
+
+import '../../../../../core/utils/styles.dart';
+import 'book_rating.dart';
+import 'custom_list_view_item.dart';
+import 'free_preview_and_price.dart';
 
 class BooksDetailsSection extends StatelessWidget {
   const BooksDetailsSection({super.key});

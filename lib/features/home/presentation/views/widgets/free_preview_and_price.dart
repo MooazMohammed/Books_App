@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/custom_button.dart';
+import '../../../../../core/custom_button.dart';
 
 class FreePreviewnPrice extends StatelessWidget {
   const FreePreviewnPrice({super.key});

@@ -1,10 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_application_1/core/errors/failure.dart';
-import 'package:flutter_application_1/features/home/data/data_sources/home_loca_data_source.dart';
-import 'package:flutter_application_1/features/home/data/data_sources/home_remote_data_source.dart';
-import 'package:flutter_application_1/features/home/domain/entities/book_entity.dart';
-import 'package:flutter_application_1/features/home/domain/repos/home_repo.dart';
+
+import '../../../../core/errors/failure.dart';
+import '../../domain/entities/book_entity.dart';
+import '../../domain/repos/home_repo.dart';
+import '../data_sources/home_loca_data_source.dart';
+import '../data_sources/home_remote_data_source.dart';
 
 class HomeRepoImp extends HomeRepo {
   final HomeLocaDataSource homeLocaDataSource;

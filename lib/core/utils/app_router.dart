@@ -1,8 +1,9 @@
-import 'package:flutter_application_1/features/home/presentation/views/book_details_view.dart';
-import 'package:flutter_application_1/features/home/presentation/views/home_view.dart';
-import 'package:flutter_application_1/features/search/presentation/views/search_view.dart';
-import 'package:flutter_application_1/features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../features/home/presentation/views/book_details_view.dart';
+import '../../features/home/presentation/views/home_view.dart';
+import '../../features/search/presentation/views/search_view.dart';
+import '../../features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
   static const homeView = "/homeView";

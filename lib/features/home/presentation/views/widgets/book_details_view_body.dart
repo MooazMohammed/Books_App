@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/books_details_section.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/custom_book_details_app_bar.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/similar_books_section.dart';
+
+import '../../../../../constants.dart';
+import 'books_details_section.dart';
+import 'custom_book_details_app_bar.dart';
+import 'similar_books_section.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key});

@@ -1,7 +1,7 @@
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/core/utils/styles.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/smaller_list_view_books.dart';
+import '../../../../../core/utils/styles.dart';
+import 'smaller_list_view_books.dart';
 
 class SimilarBooksSection extends StatelessWidget {
   const SimilarBooksSection({super.key});

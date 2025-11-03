@@ -1,6 +1,7 @@
-import 'package:flutter_application_1/constants.dart';
-import 'package:flutter_application_1/features/home/domain/entities/book_entity.dart';
 import 'package:hive_flutter/adapters.dart';
+
+import '../../../../constants.dart';
+import '../../domain/entities/book_entity.dart';
 
 abstract class HomeLocaDataSource {
   List<BookEntity> fetchFeaturedBooks();

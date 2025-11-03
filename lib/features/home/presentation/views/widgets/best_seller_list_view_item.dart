@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/utils/app_router.dart';
-import 'package:flutter_application_1/core/utils/assets.dart';
-import 'package:flutter_application_1/core/utils/styles.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../../core/utils/app_router.dart';
+import '../../../../../core/utils/assets.dart';
+import '../../../../../core/utils/styles.dart';
+import 'book_rating.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key});

@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/features/home/domain/entities/book_entity.dart';
+import '../../../domain/entities/book_entity.dart';
 import 'access_info.dart';
 import 'sale_info.dart';
 import 'search_info.dart';

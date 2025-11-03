@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/utils/assets.dart';
-import 'package:flutter_application_1/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../../../../core/utils/assets.dart';
+import 'sliding_text.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});

@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/constants.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/best_seller_list_view.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/featured_list_view_item.dart';
-import 'package:flutter_application_1/core/utils/styles.dart';
+
+import '../../../../../constants.dart';
+import '../../../../../core/utils/styles.dart';
+import 'best_seller_list_view.dart';
+import 'custom_app_bar.dart';
+import 'fetch_featured_books_list_view_bloc_builder.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return  const CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(padding: kPadding, child: CustomAppBar()),
-              FeaturedListView(),
+              FetchFeaturedBooksListViewBlocBuilder(),
               SizedBox(height: 30),
               Padding(
                 padding: kPadding,
@@ -33,4 +34,6 @@ class HomeViewBody extends StatelessWidget {
       ],
     );
   }
+
+
 }
