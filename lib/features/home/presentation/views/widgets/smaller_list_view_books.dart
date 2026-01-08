@@ -18,7 +18,7 @@ class SmallerListViewBooks extends StatelessWidget {
         itemBuilder: (context, index) {
           return const Padding(
             padding: EdgeInsets.only(right: 8.0),
-            child: CustomBookImage(),
+            child: CustomBookImage(imageUrl: '',),
           );
         },
       ),

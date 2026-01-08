@@ -61,4 +61,3 @@ class BookModel extends BookEntity {
         'searchInfo': searchInfo?.toJson(),
       };
 }
-
