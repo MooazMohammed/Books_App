@@ -20,9 +20,10 @@ class HomeRepoImp extends HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks({
     bool forceRefresh = false,
+    int pageNumber = 0,
   }) async {
     try {
-      if (!forceRefresh) {
+      if (!forceRefresh && pageNumber == 0) {
         bool isCacheValid = homeLocaDataSource.isCacheValid(
           kFeaturedBoxTimesTemp,
         );
@@ -36,10 +37,19 @@ class HomeRepoImp extends HomeRepo {
         }
       }
 
-      List<BookEntity> remotebooks;
-      remotebooks = await homeRemoteDataSource.fetchFeaturedBooks();
+      int baseStartIndex = homeLocaDataSource.getRandomStartIndex(
+        kFeaturedStartIndex,
+      );
 
-      homeLocaDataSource.saveCacheTime(kFeaturedBoxTimesTemp);
+      List<BookEntity> remotebooks;
+      remotebooks = await homeRemoteDataSource.fetchFeaturedBooks(
+        pageNumber: pageNumber,
+        baseStartIndex: baseStartIndex,
+      );
+
+      if (pageNumber == 0) {
+        homeLocaDataSource.saveCacheTime(kFeaturedBoxTimesTemp);
+      }
 
       return right(remotebooks);
     } on Exception catch (e) {
@@ -59,9 +69,10 @@ class HomeRepoImp extends HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetchNewestBooks({
     bool forceRefresh = false,
+    int pageNumber = 0,
   }) async {
     try {
-      if (!forceRefresh) {
+      if (!forceRefresh && pageNumber == 0) {
         bool isCacheValid = homeLocaDataSource.isCacheValid(
           kNewestBoxTimesTemp,
         );
@@ -74,11 +85,18 @@ class HomeRepoImp extends HomeRepo {
           }
         }
       }
-
+      int baseStartIndex = homeLocaDataSource.getRandomStartIndex(
+        kNewestStartIndex,
+      );
       List<BookEntity> remotebooks;
-      remotebooks = await homeRemoteDataSource.fetchNewestBooks();
+      remotebooks = await homeRemoteDataSource.fetchNewestBooks(
+        baseStartIndex: baseStartIndex,
+        pageNumber: pageNumber,
+      );
 
-      homeLocaDataSource.saveCacheTime(kNewestBoxTimesTemp);
+      if (pageNumber == 0) {
+        homeLocaDataSource.saveCacheTime(kNewestBoxTimesTemp);
+      }
 
       return right(remotebooks);
     } on Exception catch (e) {

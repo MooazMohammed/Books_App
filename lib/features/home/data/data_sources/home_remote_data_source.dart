@@ -6,8 +6,8 @@ import '../../domain/entities/book_entity.dart';
 import '../models/book_model/book_model.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchFeaturedBooks();
-  Future<List<BookEntity>> fetchNewestBooks();
+  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0, int baseStartIndex =0});
+  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0, int baseStartIndex =0});
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
@@ -16,26 +16,33 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   HomeRemoteDataSourceImpl({required this.apiService});
 
   @override
-  Future<List<BookEntity>> fetchFeaturedBooks() async {
+  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0, int baseStartIndex =0}) async {
+    int startIndex = baseStartIndex + ( pageNumber * 10 );
+
     var data = await apiService.get(
-      endPoint: 'volumes?Filtering=free-ebooks&q=programming',
+      endPoint:
+          'volumes?Filtering=free-ebooks&q=programming&startIndex=$startIndex&maxResults=10',
     );
     List<BookEntity> books = [];
     getsBookList(data, books);
-    saveLocalData(books, kFeaturedBox);
+    saveLocalData(books, kFeaturedBox, isFirstPage: pageNumber == 0);
 
     return books;
   }
 
   @override
-  Future<List<BookEntity>> fetchNewestBooks() async {
+  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0, int baseStartIndex =0}) async {
+
+  int startIndex = baseStartIndex + ( pageNumber * 10 );
+
+
     var data = await apiService.get(
       endPoint:
-          'volumes?Filtering=free-ebooks&sorting=newest&q=programming',
+          'volumes?Filtering=free-ebooks&sorting=newest&q=programming&startIndex=$startIndex&maxResults=10',
     );
     List<BookEntity> books = [];
     getsBookList(data, books);
-    saveLocalData(books, kNewestBox);
+    saveLocalData(books, kNewestBox, isFirstPage:  pageNumber == 0);
 
     return books;
   }
@@ -49,8 +56,17 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     }
   }
 
-  void saveLocalData(List<BookEntity> books, String boxName) {
+  void saveLocalData(
+    List<BookEntity> books,
+    String boxName, {
+    bool isFirstPage = true,
+  }) {
     var box = Hive.box<BookEntity>(boxName);
+
+    if (isFirstPage) {
+      box.clear();
+    }
+
     box.addAll(books);
   }
 }

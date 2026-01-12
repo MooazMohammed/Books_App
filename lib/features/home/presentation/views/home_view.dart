@@ -13,16 +13,15 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-
   @override
-void initState() {
-  super.initState();
+  void initState() {
+    super.initState();
 
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    BlocProvider.of<FeaturedBooksCubit>(context).fetchFeatchuredBooks();
-    BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooksUseCase();
-  });
-}
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks();
+      BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooksUseCase();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -18,3 +18,16 @@ final class FeaturedBooksSuccess extends FeaturedBooksState {
 
   FeaturedBooksSuccess({required this.books});
 }
+
+final class FeaturedBooksPaginationLoading extends FeaturedBooksState {
+  final List<BookEntity> currentBooks;
+
+  FeaturedBooksPaginationLoading({required this.currentBooks});
+}
+
+final class FeaturedBooksPaginationFailure extends FeaturedBooksState {
+  final List<BookEntity> currentBooks;
+  final String errMessage;
+
+  FeaturedBooksPaginationFailure( {required this.currentBooks , required this.errMessage,});
+}

@@ -8,18 +8,65 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
   FeaturedBooksCubit(this.featuredBooksUseCase) : super(FeaturedBooksInitial());
 
   final FetchFeaturedBooksUseCase featuredBooksUseCase;
-  Future<void> fetchFeatchuredBooks() async {
+
+  List<BookEntity> _allBooks = [];
+  int _currentPage = 0;
+  bool _isLoadingMore = false;
+
+  Future<void> fetchFeaturedBooks({bool forceRefresh = false}) async {
+    if (forceRefresh) {
+      _currentPage = 0;
+      _allBooks = [];
+    }
+
     emit(FeaturedBooksLoading());
 
-    var result = await featuredBooksUseCase.call();
+    var result = await featuredBooksUseCase.call(
+      pageNumber: _currentPage,
+      forceRefresh: forceRefresh,
+    );
 
     result.fold(
-      (l) {
-        emit(FeaturedBooksFailure(errMessage: l.message));
+      (failure) {
+        emit(FeaturedBooksFailure(errMessage: failure.message));
       },
-      (r) {
-        emit(FeaturedBooksSuccess(books: r));
+      (books) {
+        _allBooks = books;
+        emit(FeaturedBooksSuccess(books: books));
       },
     );
+  }
+
+  Future<void> fetchMoreFeaturedBooks({bool forceRefresh = false}) async {
+    if (_isLoadingMore) {
+      return;
+    }
+
+    _isLoadingMore = true;
+    _currentPage++;
+
+    emit(FeaturedBooksPaginationLoading(currentBooks: _allBooks));
+
+    var result = await featuredBooksUseCase.call(
+      pageNumber: _currentPage,
+      forceRefresh: true,
+    );
+
+    result.fold(
+      (failure) {
+        _currentPage--;
+        emit(
+          FeaturedBooksPaginationFailure(
+            errMessage: failure.message,
+            currentBooks: _allBooks,
+          ),
+        );
+      },
+      (newBooks) {
+        _allBooks.addAll(newBooks);
+        emit(FeaturedBooksSuccess(books: List.from(_allBooks)));
+      },
+    );
+    _isLoadingMore = false;
   }
 }
