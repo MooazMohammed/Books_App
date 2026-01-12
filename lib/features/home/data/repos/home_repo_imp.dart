@@ -18,17 +18,21 @@ class HomeRepoImp extends HomeRepo {
   });
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks({
+    bool forceRefresh = false,
+  }) async {
     try {
-      bool isCacheValid = homeLocaDataSource.isCacheValid(
-        kFeaturedBoxTimesTemp,
-      );
+      if (!forceRefresh) {
+        bool isCacheValid = homeLocaDataSource.isCacheValid(
+          kFeaturedBoxTimesTemp,
+        );
 
-      if (isCacheValid) {
-        List<BookEntity> localBooks = homeLocaDataSource.fetchFeaturedBooks();
+        if (isCacheValid) {
+          List<BookEntity> localBooks = homeLocaDataSource.fetchFeaturedBooks();
 
-        if (localBooks.isNotEmpty) {
-          return right(localBooks);
+          if (localBooks.isNotEmpty) {
+            return right(localBooks);
+          }
         }
       }
 
@@ -53,17 +57,21 @@ class HomeRepoImp extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks({
+    bool forceRefresh = false,
+  }) async {
     try {
-      bool isCacheValid = homeLocaDataSource.isCacheValid(
-        kNewestBoxTimesTemp,
-      );
+      if (!forceRefresh) {
+        bool isCacheValid = homeLocaDataSource.isCacheValid(
+          kNewestBoxTimesTemp,
+        );
 
-      if (isCacheValid) {
-        List<BookEntity> localBooks = homeLocaDataSource.fetchNewestBooks();
+        if (isCacheValid) {
+          List<BookEntity> localBooks = homeLocaDataSource.fetchNewestBooks();
 
-        if (localBooks.isNotEmpty) {
-          return right(localBooks);
+          if (localBooks.isNotEmpty) {
+            return right(localBooks);
+          }
         }
       }
 
