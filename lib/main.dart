@@ -23,6 +23,7 @@ void main() async {
   await Hive.openBox<BookEntity>(kFeaturedBox);
 
   await Hive.openBox<BookEntity>(kNewestBox);
+  await Hive.openBox(kSettingsBox);
  
   runApp(const MyApp());
 }

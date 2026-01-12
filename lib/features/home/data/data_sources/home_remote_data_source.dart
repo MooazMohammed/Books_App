@@ -23,14 +23,15 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     List<BookEntity> books = [];
     getsBookList(data, books);
     saveLocalData(books, kFeaturedBox);
-  
+
     return books;
   }
 
   @override
   Future<List<BookEntity>> fetchNewestBooks() async {
     var data = await apiService.get(
-      endPoint: 'volumes?Filtering=free-ebooks&sorting=newest&q=programming',
+      endPoint:
+          'volumes?Filtering=free-ebooks&sorting=newest&q=programmingstartIndex=10',
     );
     List<BookEntity> books = [];
     getsBookList(data, books);
@@ -49,7 +50,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   }
 
   void saveLocalData(List<BookEntity> books, String boxName) {
-    var box = Hive.box<List<BookEntity>>(boxName);
-    box.add(books);
+    var box = Hive.box<BookEntity>(boxName);
+    box.addAll(books);
   }
 }

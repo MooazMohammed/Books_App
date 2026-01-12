@@ -6,3 +6,7 @@ const kPadding = EdgeInsets.symmetric(horizontal: 16);
 
 const kFeaturedBox = "featured_box";
 const kNewestBox = "newest_box";
+const kSettingsBox = "settings_box";
+const kFeaturedBoxTimesTemp = "featured_times_temp";
+const kNewestBoxTimesTemp = "newest_times_temp";
+const kCacheDuration = 24;
