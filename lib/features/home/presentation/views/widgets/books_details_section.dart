@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
-import 'custom_list_view_item.dart';
+import 'custom_book_image.dart';
 import 'free_preview_and_price.dart';
 
 class BooksDetailsSection extends StatelessWidget {
