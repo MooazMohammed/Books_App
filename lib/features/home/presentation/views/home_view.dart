@@ -19,7 +19,7 @@ class _HomeViewState extends State<HomeView> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks();
-      BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooksUseCase();
+      BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks();
     });
   }
 

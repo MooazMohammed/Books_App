@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-
 import '../../../../core/errors/failure.dart';
 import '../../../../core/use%20cases/no_param_use_case.dart';
 import '../entities/book_entity.dart';

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/features/home/domain/entities/book_entity.dart';
 import 'package:flutter_application_1/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter_application_1/features/home/presentation/views/widgets/featured_list_view_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,8 +25,13 @@ class FetchFeaturedBooksListViewBlocBuilder extends StatelessWidget {
       },
     );
   }
-
-
+ 
+  //  Initial
+  //  sucess
+  //  failure
+  //  Loading
+  //  LoadingPagination
+  //  FailurePagination
 
 
 

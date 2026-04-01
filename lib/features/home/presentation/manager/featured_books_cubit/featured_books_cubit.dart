@@ -37,7 +37,7 @@ class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
     );
   }
 
-  Future<void> fetchMoreFeaturedBooks({bool forceRefresh = false}) async {
+  Future<void> fetchMoreFeaturedBooks() async {
     if (_isLoadingMore) {
       return;
     }

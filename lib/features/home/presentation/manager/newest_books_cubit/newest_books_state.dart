@@ -20,3 +20,19 @@ final class NewestBooksSuccess extends NewestBooksState {
 
   NewestBooksSuccess({required this.books});
 }
+
+final class NewestBooksPaginationLoading extends NewestBooksState {
+  final List<BookEntity> currentBooks;
+
+  NewestBooksPaginationLoading({required this.currentBooks});
+}
+
+final class NewestBooksPaginationLoadingFailure extends NewestBooksState {
+  final List<BookEntity> currentBooks;
+  final String errMessage;
+
+  NewestBooksPaginationLoadingFailure({
+    required this.errMessage,
+    required this.currentBooks,
+  });
+}
